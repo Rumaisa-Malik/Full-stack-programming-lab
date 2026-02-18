@@ -1,0 +1,93 @@
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #e6e6fa, #d8bfd8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.card {
+    width: 450px;
+    padding: 30px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    color: #4b0082;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #6a0dad;
+}
+
+.question {
+    margin-bottom: 15px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #d8bfd8;
+    outline: none;
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+input:focus {
+    box-shadow: 0 0 8px #d8bfd8;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.primary {
+    background: #9370db;
+    color: white;
+}
+
+.primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.secondary {
+    background: #dda0dd;
+    color: white;
+}
+
+.secondary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.result-box {
+    margin-top: 20px;
+    padding: 12px;
+    border-radius: 12px;
+    text-align: center;
+    font-weight: bold;
+    transition: 0.4s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
