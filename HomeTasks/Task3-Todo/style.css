@@ -1,0 +1,47 @@
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: #F7F2FB;
+  color: #3D2C54;
+  padding: 30px;
+}
+
+h2 {
+  text-align: center;
+  color: #9C7BD9;
+}
+
+.task {
+  background: #E6D9F2;
+  padding: 12px;
+  margin: 10px auto;
+  width: 420px;
+  border-radius: 10px;
+  display: flex;
+  gap: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.task input {
+  flex: 1;
+  padding: 6px;
+  border-radius: 6px;
+  border: none;
+}
+
+button {
+  background: #B497D6;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #9C7BD9;
+}
+
+.completed input {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
