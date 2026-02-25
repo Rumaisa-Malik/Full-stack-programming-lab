@@ -1,0 +1,43 @@
+body{
+    font-family:Arial;
+    background:#eef3ff;
+}
+
+.container{
+    width:600px;
+    margin:40px auto;
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 0 15px rgba(0,0,0,0.15);
+    text-align:center;
+}
+
+h1{
+    background:#3f63d3;
+    color:white;
+    padding:12px;
+    border-radius:8px;
+}
+
+button{
+    padding:10px 18px;
+    background:#3f63d3;
+    color:white;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    margin-top:10px;
+}
+
+button:hover{
+    background:#2c4db3;
+}
+
+.card{
+    background:#f1f4ff;
+    margin:12px 0;
+    padding:12px;
+    border-radius:8px;
+    text-align:left;
+}

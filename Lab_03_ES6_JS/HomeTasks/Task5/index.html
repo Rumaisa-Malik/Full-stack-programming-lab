@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Catalog - ES6 Map</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>🛒 Product Catalog (Map)</h1>
+
+    <!-- Add Product -->
+    <h2>Add Product</h2>
+    <input type="number" id="pid" placeholder="Product ID">
+    <input type="text" id="pname" placeholder="Product Name">
+    <input type="number" id="pprice" placeholder="Product Price">
+    <button id="addBtn">Add Product</button>
+
+    <p id="message"></p>
+
+    <!-- Search -->
+    <h2>Search Product</h2>
+    <input type="number" id="searchId" placeholder="Enter Product ID">
+    <button id="searchBtn">Search</button>
+    <div id="searchResult"></div>
+
+    <!-- Delete -->
+    <h2>Delete Product</h2>
+    <input type="number" id="deleteId" placeholder="Enter Product ID">
+    <button id="deleteBtn">Delete</button>
+
+    <!-- Display -->
+    <h2>All Products</h2>
+    <ul id="productList"></ul>
+
+    <h3 id="total"></h3>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
