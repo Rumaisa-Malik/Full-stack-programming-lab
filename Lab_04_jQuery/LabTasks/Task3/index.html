@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Interactive Form Validation</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<div class="form-container">
+
+<h2>Registration Form</h2>
+
+<form id="myForm">
+
+<input type="text" id="name" placeholder="Enter your name">
+<small class="error" id="nameError"></small>
+
+<input type="email" id="email" placeholder="Enter your email">
+<small class="error" id="emailError"></small>
+
+<input type="password" id="password" placeholder="Enter password">
+<small class="error" id="passwordError"></small>
+
+<button type="submit">Submit</button>
+
+</form>
+
+<p id="successMessage"></p>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
