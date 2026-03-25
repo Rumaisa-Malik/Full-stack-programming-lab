@@ -1,0 +1,77 @@
+/* 🧈 Clean Butter Yellow Professional Theme */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+
+  background: linear-gradient(135deg, #fff9db, #fff3bf, #ffe066);
+  background-size: 300% 300%;
+  animation: bgMove 10s ease infinite;
+
+  color: #333;
+}
+
+@keyframes bgMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 💎 MAIN CARD */
+.container {
+  width: 90%;
+  max-width: 650px;
+  margin: 80px auto;
+  padding: 50px 40px;
+
+  border-radius: 20px;
+  background: #fffdf5;
+
+  box-shadow: 0px 10px 30px rgba(0,0,0,0.1);
+
+  text-align: center;
+}
+
+/* 📝 TEXT */
+h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #5c3d00;
+}
+
+/* 🔘 BUTTON GROUP */
+.btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+/* 🔘 BUTTON */
+.btn {
+  padding: 12px 20px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+
+  background: #facc15;
+  color: #333;
+
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  background: #eab308;
+}
+
+/* 📦 MESSAGE */
+.message {
+  margin-top: 25px;
+  font-size: 18px;
+  color: #5c3d00;
+}
