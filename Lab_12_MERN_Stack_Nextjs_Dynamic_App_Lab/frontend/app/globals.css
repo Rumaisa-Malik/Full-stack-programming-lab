@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ececec;
+  --foreground: #242424;
+  --accent: #e0770b;
+  --accent-soft: #f5c27f;
+  --panel: #f6f6f6;
+  --panel-border: #d8d8d8;
+  --muted: #6b6b6b;
+  --font-body: "Arial", "Helvetica Neue", sans-serif;
+  --font-display: "Times New Roman", Georgia, serif;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.3;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display), Georgia, serif;
+}
+
+a,
+button {
+  transition: all 0.2s ease;
+}
+
+.ticket-button {
+  position: relative;
+  display: inline-block;
+  padding: 7px 20px;
+  border: 1px solid #cfcfcf;
+  background: #f8f8f8;
+  color: #353535;
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: 0.01em;
+}
+
+.ticket-button::before,
+.ticket-button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  transform: translateY(-50%);
+  border-radius: 999px;
+  background: var(--background);
+  border: 1px solid #d8d8d8;
+}
+
+.ticket-button::before {
+  left: -5px;
+}
+
+.ticket-button::after {
+  right: -5px;
+}
+
+.rustik-card {
+  border: 1px solid var(--panel-border);
+  background: var(--panel);
+}
+
+.accent-line {
+  height: 4px;
+  background: linear-gradient(90deg, #e17709, #f9a13d, #e17709);
+}
+
+.checkout-input {
+  width: 100%;
+  border: 1px solid #cfcfcf;
+  background: #fff;
+  padding: 10px 12px;
+  font-size: 16px;
+  color: #333;
+  outline: none;
+}
+
+.checkout-input:focus {
+  border-color: #e1760a;
+}
+
+.rustik-hero-curve {
+  position: absolute;
+  inset: auto 0 10px 0;
+  height: 170px;
+  pointer-events: none;
+}
+
+.rustik-hero-curve path.primary {
+  fill: none;
+  stroke: #ec7d0f;
+  stroke-width: 6;
+}
+
+.rustik-hero-curve path.secondary {
+  fill: none;
+  stroke: #737373;
+  stroke-width: 1;
+}
