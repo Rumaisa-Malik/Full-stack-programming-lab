@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyFlow | Premium Weather Forecast</title>
+    <!-- Google Fonts for state-of-the-art typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for weather icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="weather-default">
+
+    <div class="app-container">
+        
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo">
+                <i class="fa-solid fa-wind logo-icon"></i>
+                <span class="logo-text">SkyFlow</span>
+            </div>
+            <p class="tagline">Real-time city telemetry & forecast system</p>
+        </header>
+
+        <!-- Main Search and Control Bar -->
+        <div class="search-panel glass-panel">
+            <div class="search-box">
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="cityInput" placeholder="Explore weather in any city..." autocomplete="off">
+                </div>
+                <button id="searchBtn" class="search-btn">
+                    <span>Search</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <!-- Recent Searches Container -->
+            <div class="recent-searches" id="recentSearches">
+                <span class="recent-title">Recent:</span>
+                <div class="recent-tags" id="recentTags">
+                    <!-- Dynamic history pills will be injected here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Workspace: Weather Results or Loading Skeleton -->
+        <main class="dashboard-grid">
+            
+            <!-- Result Panel (initially hidden, shown on search success) -->
+            <div id="weatherDashboard" class="dashboard-content hidden">
+                
+                <!-- Hero Weather Card -->
+                <section class="hero-card glass-panel">
+                    <div class="weather-main-info">
+                        <div class="location-header">
+                            <i class="fa-solid fa-location-dot location-pin"></i>
+                            <div>
+                                <h2 id="cityName" class="city-name">Berlin</h2>
+                                <p id="countryName" class="country-name">Germany</p>
+                            </div>
+                        </div>
+                        <div class="weather-visual">
+                            <div id="weatherIconContainer" class="weather-icon-wrapper">
+                                <!-- Dynamic custom icon injected here -->
+                            </div>
+                            <div>
+                                <div class="temp-display">
+                                    <span id="currentTemp">15.3</span><span class="temp-unit">°C</span>
+                                </div>
+                                <div id="weatherCondition" class="weather-condition">Partly Cloudy</div>
+                                <div id="weatherDesc" class="weather-desc">Overcast</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Detailed Telemetry Metrics Grid -->
+                <section class="metrics-grid">
+                    
+                    <!-- Apparent Temperature Card -->
+                    <div class="metric-card glass-panel">
+                        <div class="metric-header">
+                            <i class="fa-solid fa-temperature-half metric-icon apparent-icon"></i>
+                            <span class="metric-title">Feels Like</span>
+                        </div>
+                        <div class="metric-value">
+                            <span id="apparentTemp">14.1</span>°C
+                        </div>
+                        <div class="metric-footer">Thermal comfort scale</div>
+                    </div>
+
+                    <!-- Humidity Card -->
+                    <div class="metric-card glass-panel">
+                        <div class="metric-header">
+                            <i class="fa-solid fa-droplet metric-icon humidity-icon"></i>
+                            <span class="metric-title">Humidity</span>
+                        </div>
+                        <div class="metric-value">
+                            <span id="humidityVal">68</span>%
+                        </div>
+                        <div class="metric-progress-wrapper">
+                            <div class="progress-bar">
+                                <div id="humidityProgress" class="progress-fill" style="width: 68%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- UV Index Card -->
+                    <div class="metric-card glass-panel">
+                        <div class="metric-header">
+                            <i class="fa-solid fa-sun metric-icon uv-icon"></i>
+                            <span class="metric-title">UV Index</span>
+                        </div>
+                        <div class="metric-value" id="uvIndexVal">
+                            4.5
+                        </div>
+                        <div class="uv-badge" id="uvBadge">Moderate</div>
+                    </div>
+
+                    <!-- Coordinates Card -->
+                    <div class="metric-card glass-panel">
+                        <div class="metric-header">
+                            <i class="fa-solid fa-earth-americas metric-icon geo-icon"></i>
+                            <span class="metric-title">Coordinates</span>
+                        </div>
+                        <div class="coordinates-display">
+                            <div><span class="coord-lbl">LAT:</span> <span id="latCoord" class="coord-val">52.52</span></div>
+                            <div><span class="coord-lbl">LON:</span> <span id="lonCoord" class="coord-val">13.41</span></div>
+                        </div>
+                        <div class="metric-footer">Geographic telemetry</div>
+                    </div>
+
+                </section>
+
+                <!-- Hourly Forecast (6 Hours) -->
+                <section class="hourly-forecast-panel glass-panel">
+                    <h3 class="section-title"><i class="fa-regular fa-clock"></i> Next 6 Hours Telemetry</h3>
+                    <div class="hourly-timeline" id="hourlyTimeline">
+                        <!-- Dynamic hourly cards injected here -->
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- Shimmer Loading Skeleton Screen -->
+            <div id="skeletonLoader" class="skeleton-wrapper hidden">
+                <div class="skeleton-hero glass-panel shimmer"></div>
+                <div class="skeleton-metrics-grid">
+                    <div class="skeleton-card glass-panel shimmer"></div>
+                    <div class="skeleton-card glass-panel shimmer"></div>
+                    <div class="skeleton-card glass-panel shimmer"></div>
+                    <div class="skeleton-card glass-panel shimmer"></div>
+                </div>
+                <div class="skeleton-hourly glass-panel shimmer"></div>
+            </div>
+
+            <!-- Elegant Error Display Card -->
+            <div id="errorCard" class="error-card glass-panel hidden">
+                <div class="error-icon-wrapper">
+                    <i class="fa-solid fa-circle-exclamation error-icon"></i>
+                </div>
+                <h3 class="error-title">City Not Found</h3>
+                <p id="errorText" class="error-text">We couldn't retrieve weather data for that city. Please double check the spelling and try again.</p>
+                <button class="retry-btn" onclick="focusSearch()">
+                    <i class="fa-solid fa-arrows-rotate"></i> Try Another Search
+                </button>
+            </div>
+
+            <!-- Welcome / Zero State View -->
+            <div id="zeroState" class="zero-state glass-panel">
+                <div class="zero-icon-wrapper">
+                    <i class="fa-solid fa-cloud-sun-rain zero-icon"></i>
+                </div>
+                <h3>Welcome to SkyFlow</h3>
+                <p>Enter a city name above or select a recent search to retrieve live weather telemetry, daily UV indexes, and hourly forecasts.</p>
+                <div class="popular-suggestions">
+                    <span class="suggest-lbl">Try searching:</span>
+                    <button class="suggest-tag" onclick="triggerSearch('New York')">New York</button>
+                    <button class="suggest-tag" onclick="triggerSearch('Paris')">Paris</button>
+                    <button class="suggest-tag" onclick="triggerSearch('Tokyo')">Tokyo</button>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <p>SkyFlow Weather API &bull; Built with Node.js, Express, Axios & Open-Meteo REST Services</p>
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
