@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NewsPulse | Premium RESTful Headlines API</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Styling -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-glows">
+        <div class="glow glow-1"></div>
+        <div class="glow glow-2"></div>
+    </div>
+
+    <div class="app-container">
+        
+        <!-- Header -->
+        <header class="app-header">
+            <div class="brand">
+                <div class="logo-wrapper">
+                    <i class="fa-solid fa-newspaper logo-icon"></i>
+                </div>
+                <div>
+                    <h1 class="logo-text">NewsPulse</h1>
+                    <p class="tagline">Premium RESTful News Headlines API</p>
+                </div>
+            </div>
+            <div class="api-badge">
+                <span class="pulse-indicator"></span>
+                <span>API Status: Live</span>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="main-layout">
+            
+            <!-- Sidebar: Controls & API Settings -->
+            <section class="control-panel glass-panel">
+                <div class="panel-section">
+                    <h3 class="section-title"><i class="fa-solid fa-sliders"></i> Query Configuration</h3>
+                    
+                    <div class="form-group">
+                        <label for="countrySelect">Select Country Code</label>
+                        <div class="select-wrapper">
+                            <select id="countrySelect">
+                                <option value="us" selected>United States (us)</option>
+                                <option value="gb">United Kingdom (gb)</option>
+                                <option value="in">India (in)</option>
+                                <option value="ca">Canada (ca)</option>
+                                <option value="au">Australia (au)</option>
+                                <option value="jp">Japan (jp)</option>
+                                <option value="de">Germany (de)</option>
+                                <option value="fr">France (fr)</option>
+                                <option value="cn">China (cn)</option>
+                                <option value="br">Brazil (br)</option>
+                                <option value="za">South Africa (za)</option>
+                                <option value="ru">Russia (ru)</option>
+                                <option value="sa">Saudi Arabia (sa)</option>
+                            </select>
+                            <i class="fa-solid fa-chevron-down select-chevron"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="limitRange">Article Count Limit (5 - 10)</label>
+                        <div class="range-wrapper">
+                            <input type="range" id="limitRange" min="5" max="10" value="8" step="1">
+                            <span id="limitValue" class="range-badge">8</span>
+                        </div>
+                    </div>
+
+                    <button id="fetchBtn" class="primary-btn">
+                        <span>Fetch Latest Headlines</span>
+                        <i class="fa-solid fa-arrow-rotate-right btn-icon"></i>
+                    </button>
+                </div>
+
+                <div class="panel-section quick-filters-section">
+                    <h4 class="subsection-title">Quick Country Filters</h4>
+                    <div class="filter-chips">
+                        <button class="chip active" data-code="us">US</button>
+                        <button class="chip" data-code="gb">UK</button>
+                        <button class="chip" data-code="in">IN</button>
+                        <button class="chip" data-code="ca">CA</button>
+                        <button class="chip" data-code="au">AU</button>
+                        <button class="chip" data-code="jp">JP</button>
+                    </div>
+                </div>
+
+                <!-- API Docs Summary -->
+                <div class="panel-section api-doc-info">
+                    <h4 class="subsection-title"><i class="fa-solid fa-book"></i> Endpoint Reference</h4>
+                    <p class="doc-text">Retrieve real-time filtered headlines using dynamic URL routes and query filters.</p>
+                    <div class="endpoint-card">
+                        <span class="method">GET</span>
+                        <span class="path">/api/news/:country</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Workspace Pane: Visual Grid and Live REST JSON Console -->
+            <section class="workspace-pane">
+                
+                <!-- HTTP Endpoint Path Visualizer -->
+                <div class="endpoint-visualizer glass-panel">
+                    <div class="endpoint-title">
+                        <i class="fa-solid fa-link"></i> Active Request URL
+                    </div>
+                    <div class="endpoint-url-box">
+                        <span class="host" id="endpointHost">http://localhost:3000</span><span class="endpoint-path" id="endpointPath">/api/news/us?limit=8</span>
+                        <button class="copy-url-btn" id="copyUrlBtn" title="Copy endpoint URL">
+                            <i class="fa-regular fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="tabs-container">
+                    <div class="tab-triggers">
+                        <button class="tab-trigger active" data-tab="headlines">
+                            <i class="fa-solid fa-grip"></i> Headline Grid
+                        </button>
+                        <button class="tab-trigger" data-tab="json">
+                            <i class="fa-solid fa-code"></i> JSON Response
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tab Contents -->
+                <div class="tab-viewports">
+                    
+                    <!-- Headlines Grid Viewport -->
+                    <div class="tab-content active" id="tabHeadlines">
+                        <!-- Shimmer Loader -->
+                        <div id="shimmerLoader" class="shimmer-grid hidden">
+                            <div class="shimmer-card glass-panel"></div>
+                            <div class="shimmer-card glass-panel"></div>
+                            <div class="shimmer-card glass-panel"></div>
+                            <div class="shimmer-card glass-panel"></div>
+                        </div>
+
+                        <!-- Error State Card -->
+                        <div id="errorCard" class="error-panel glass-panel hidden">
+                            <i class="fa-solid fa-circle-exclamation error-icon"></i>
+                            <h3 id="errorTitle">Request Failed</h3>
+                            <p id="errorMsg">An error occurred while fetching news headlines.</p>
+                        </div>
+
+                        <!-- Empty State -->
+                        <div id="emptyCard" class="empty-panel glass-panel hidden">
+                            <i class="fa-solid fa-globe empty-icon"></i>
+                            <h3>No Articles Found</h3>
+                            <p>No headlines are currently available for this country code.</p>
+                        </div>
+
+                        <!-- Articles Grid -->
+                        <div id="articlesGrid" class="articles-grid">
+                            <!-- Injected dynamically by main.js -->
+                        </div>
+                    </div>
+
+                    <!-- Developer JSON Console Viewport -->
+                    <div class="tab-content" id="tabJson">
+                        <div class="json-console-wrapper glass-panel">
+                            <div class="json-header">
+                                <div class="json-dots">
+                                    <span class="dot red"></span>
+                                    <span class="dot yellow"></span>
+                                    <span class="dot green"></span>
+                                </div>
+                                <button class="copy-json-btn" id="copyJsonBtn">
+                                    <i class="fa-regular fa-copy"></i> Copy JSON
+                                </button>
+                            </div>
+                            <pre><code id="jsonCode" class="json-code">Fetching JSON response...</code></pre>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <p>NewsPulse Headlines Telemetry API &bull; Crafted with Node.js, Express & NewsAPI Services</p>
+        </footer>
+
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
